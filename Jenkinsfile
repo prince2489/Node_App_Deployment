@@ -14,6 +14,7 @@ pipeline {
                     }
             }
         }
+        }
         stage('Image Push') {
             steps {
                 sh 'docker push . -t prince2489/mynodeapp:v1'
