@@ -6,6 +6,14 @@ pipeline {
                 git branch: 'main', changelog: false, poll: false, url: 'https://github.com/prince2489/node-todo-app.git'
             }
         }
+        stage('Dir') {
+            steps {
+                sh '''
+                ls
+                pwd
+                '''
+            }
+        }
         stage('Image Build') {
             steps {
                 script {
