@@ -8,7 +8,10 @@ pipeline {
         }
         stage('Image Build') {
             steps {
-                sh 'docker build . -t prince2489/mynodeapp:v1'
+                script {
+                    docker.withRegistry('', '') {
+                        def customImage = docker.build("prince2489/mynodeapp:v1")
+                    }
             }
         }
         stage('Image Push') {
