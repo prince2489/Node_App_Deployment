@@ -25,12 +25,13 @@ pipeline {
             // }
         }
         }
+        }
         stage('Image Push') {
             steps {
                 script{
                     // withDockerRegistry(credentialsId: 'dockerhub-pri') {
                     customImage.push()
-                }
+                // }
             }
             }
         }
