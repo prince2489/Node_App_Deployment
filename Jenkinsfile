@@ -17,15 +17,21 @@ pipeline {
         stage('Image Build') {
             steps {
                 script {
-                    docker.withRegistry('', '') {
-                        def customImage = docker.build("prince2489/mynodeapp:v1")
+                    // steps{
+                    //     docker.withRegistry('', '') {
+                    customImage = docker.build("prince2489/mynodeapp:v1")
+                    // }
                     }
-            }
+            // }
         }
         }
         stage('Image Push') {
             steps {
-                sh 'docker push . -t prince2489/mynodeapp:v1'
+                script{
+                    withDockerRegistry(credentialsId: 'dockerhub-pri') {
+                    customImage.push()
+                }
+            }
             }
         }
     }
