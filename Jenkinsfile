@@ -21,7 +21,7 @@ pipeline {
                     //     docker.withRegistry('', '') {
                     customImage = docker.build("prince2489/mynodeapp:v1")
                     // }
-                    }
+                    // }
             // }
         }
         }
